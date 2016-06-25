@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="61" id="KGk-i7-Jjw" customClass="NavigationItemCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KCm-lF-Ryu">
+                        <rect key="frame" x="0.0" y="4" width="30" height="52"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="ATQ-CY-ARW"/>
+                            <constraint firstAttribute="width" constant="30" id="jMN-75-ikH"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ATQ-CY-ARW"/>
+                            </mask>
+                        </variation>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rẻ phải ở ngã tư" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkJ-0I-Pv8">
+                        <rect key="frame" x="38" y="4" width="274" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 m(s) / 0 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mja-uB-kVJ">
+                        <rect key="frame" x="38" y="44" width="274" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="IeW-Hk-O5K"/>
+                            <constraint firstAttribute="height" constant="21" id="q7W-vd-PpN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="q7W-vd-PpN"/>
+                            </mask>
+                        </variation>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KkJ-0I-Pv8" firstAttribute="leading" secondItem="KCm-lF-Ryu" secondAttribute="trailing" constant="8" id="1jR-CQ-Na5"/>
+                    <constraint firstItem="mja-uB-kVJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KkJ-0I-Pv8" secondAttribute="bottom" constant="4" id="Fez-XF-lyF"/>
+                    <constraint firstAttribute="bottom" secondItem="mja-uB-kVJ" secondAttribute="bottom" constant="4" id="JXT-4r-zds"/>
+                    <constraint firstItem="mja-uB-kVJ" firstAttribute="leading" secondItem="KCm-lF-Ryu" secondAttribute="trailing" constant="8" id="JlX-IJ-l1C"/>
+                    <constraint firstAttribute="trailing" secondItem="KkJ-0I-Pv8" secondAttribute="trailing" constant="8" id="NFU-td-C1o"/>
+                    <constraint firstAttribute="bottom" secondItem="KCm-lF-Ryu" secondAttribute="bottom" id="NIS-uL-7hC"/>
+                    <constraint firstItem="KkJ-0I-Pv8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="58" id="Okh-EJ-dd1"/>
+                    <constraint firstItem="KkJ-0I-Pv8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="TZu-kL-tHX"/>
+                    <constraint firstAttribute="trailing" secondItem="mja-uB-kVJ" secondAttribute="trailing" constant="8" id="dxl-qj-OrB"/>
+                    <constraint firstItem="KCm-lF-Ryu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jFC-Fd-CQC"/>
+                    <constraint firstItem="KCm-lF-Ryu" firstAttribute="top" secondItem="KkJ-0I-Pv8" secondAttribute="top" id="pMr-JM-0IV"/>
+                    <constraint firstAttribute="bottom" secondItem="mja-uB-kVJ" secondAttribute="bottom" constant="9" id="syu-dx-PQJ"/>
+                    <constraint firstItem="KCm-lF-Ryu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="t12-V1-bH7"/>
+                    <constraint firstItem="KCm-lF-Ryu" firstAttribute="bottom" secondItem="mja-uB-kVJ" secondAttribute="bottom" id="vA6-IE-UVj"/>
+                    <constraint firstItem="mja-uB-kVJ" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" constant="8" id="xpm-wp-i7j"/>
+                    <constraint firstItem="KkJ-0I-Pv8" firstAttribute="leading" secondItem="KCm-lF-Ryu" secondAttribute="trailing" constant="8" id="zUg-wr-Zde"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="NIS-uL-7hC"/>
+                        <exclude reference="t12-V1-bH7"/>
+                        <exclude reference="1jR-CQ-Na5"/>
+                        <exclude reference="Okh-EJ-dd1"/>
+                        <exclude reference="syu-dx-PQJ"/>
+                        <exclude reference="xpm-wp-i7j"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ivNavigationIcon" destination="KCm-lF-Ryu" id="6UA-T7-MRg"/>
+                <outlet property="lblNavigationDes" destination="KkJ-0I-Pv8" id="CJ8-iI-L4Z"/>
+                <outlet property="lblNavigationMeter" destination="mja-uB-kVJ" id="TI0-xX-nSt"/>
+            </connections>
+            <point key="canvasLocation" x="279" y="257.5"/>
+        </tableViewCell>
+    </objects>
+</document>
