@@ -223,7 +223,7 @@ typedef enum MarkerType : NSUInteger {
         {
             NSUInteger ordinal = [waypointMarkers indexOfObject:marker];
             
-            [UIActionSheet showFromRect:marker.accessibilityFrame inView:self.view animated:YES withTitle:nil cancelButtonTitle:LString(@"cancel") destructiveButtonTitle:LString(@"remove") otherButtonTitles:@[LString(@"search_by_address")] tapBlock:^(UIActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
+            [UIActionSheet showFromRect:marker.accessibilityFrame inView:self.view animated:YES withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Remove" otherButtonTitles:@[@"Search via address"] tapBlock:^(UIActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
                 if (buttonIndex == actionSheet.destructiveButtonIndex) {
                     marker.map = nil;
                     
@@ -407,7 +407,7 @@ typedef enum MarkerType : NSUInteger {
         NSLog(@"Response data: %@", responseObject);
         
         if ([responseObject[@"status"] isEqualToString:@"ZERO_RESULTS"]){
-            [[SnackBar snackbarWithMessage:LString(@"can_not_navigate") actionText:nil duration:2 actionBlock:nil dismissalBlock:nil] show];
+            [[SnackBar snackbarWithMessage:@"Can not navigate!" actionText:nil duration:2 actionBlock:nil dismissalBlock:nil] show];
             return;
         }
         
@@ -524,7 +524,7 @@ typedef enum MarkerType : NSUInteger {
     [self addEndMarkerWithLatitude:tempPosition.latitude longitude:tempPosition.longitude];
     
     if (waypointMarkers.count > 1) {
-        [UIAlertView showWithTitle:LString(@"notice") message:LString(@"reverse_waypoint_markers_prompt") cancelButtonTitle:LString(@"no") otherButtonTitles:@[@"yes"] tapBlock:^(UIAlertView * _Nonnull alertView, NSInteger buttonIndex) {
+        [UIAlertView showWithTitle:LString(@"notice") message:@"Do you want to reverse way-point markers order?" cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] tapBlock:^(UIAlertView * _Nonnull alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 waypointMarkers = [[[waypointMarkers reverseObjectEnumerator] allObjects] mutableCopy];
                 [self reorderWaypointMarkers];
@@ -545,6 +545,33 @@ typedef enum MarkerType : NSUInteger {
     [navigationLines removeAllObjects];
     
     [self drawDirectionFromStartPoint:startMarker throughtWaypoints:waypointMarkers toDestinationPoint:endMarker];
+}
+
+- (IBAction)onBtnClearClick:(id)sender {
+    if (!startMarker && !endMarker){
+        return;
+    }
+    
+    [UIAlertView showWithTitle:@"Notice" message:@"Do you want to clear map and start over?" cancelButtonTitle:@"No" otherButtonTitles:@[@"Clear"] tapBlock:^(UIAlertView * _Nonnull alertView, NSInteger buttonIndex) {
+        
+        switch (buttonIndex) {
+            case 0:
+                break;
+            case 1:
+                [self.mapView clear];
+                startMarker = nil;
+                endMarker = nil;
+                [waypointMarkers removeAllObjects];
+                route = nil;
+                [self.panelContainerVC closePanelControllerAnimated:YES completion:nil];
+                
+                self.tfStart.text = @"";
+                self.tfEnd.text = @"";
+                
+                [self updateSnackBarMessage];
+                break;
+        }
+    }];
 }
 
 - (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url {
@@ -583,13 +610,14 @@ typedef enum MarkerType : NSUInteger {
 }
 
 - (void) updateSnackBarMessage{
+    return;
     if (snackBar) {
         [snackBar dismissAnimated:YES];
         return;
     }
     
     if (!startMarker) {
-        snackBar = [SnackBar snackbarWithMessage:LString(@"long_touch_place_start_marker") actionText:nil duration:DBL_MAX actionBlock:nil dismissalBlock:^(SnackBar *sender) {
+        snackBar = [SnackBar snackbarWithMessage:@"Long press to add start point marker" actionText:nil duration:DBL_MAX actionBlock:nil dismissalBlock:^(SnackBar *sender) {
             snackBar = nil;
             [self updateSnackBarMessage];
         }];
@@ -598,7 +626,7 @@ typedef enum MarkerType : NSUInteger {
     }
     
     if (!endMarker) {
-        snackBar = [SnackBar snackbarWithMessage:LString(@"long_touch_place_end_marker") actionText:nil duration:DBL_MAX actionBlock:nil dismissalBlock:^(SnackBar *sender) {
+        snackBar = [SnackBar snackbarWithMessage:@"Long press to add destination point marker" actionText:nil duration:DBL_MAX actionBlock:nil dismissalBlock:^(SnackBar *sender) {
             snackBar = nil;
             [self updateSnackBarMessage];
         }];
@@ -607,7 +635,7 @@ typedef enum MarkerType : NSUInteger {
     }
     
     if ([waypointMarkers count] == 0) {
-        snackBar = [SnackBar snackbarWithMessage:LString(@"long_touch_place_waypoint") actionText:nil duration:DBL_MAX actionBlock:nil dismissalBlock:^(SnackBar *sender) {
+        snackBar = [SnackBar snackbarWithMessage:@"Long press to add way-point marker (if need)" actionText:nil duration:DBL_MAX actionBlock:nil dismissalBlock:^(SnackBar *sender) {
             snackBar = nil;
             [self updateSnackBarMessage];
         }];
