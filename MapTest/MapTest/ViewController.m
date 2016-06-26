@@ -544,7 +544,7 @@ typedef enum MarkerType : NSUInteger {
     }
     [navigationLines removeAllObjects];
     
-    [self drawDirectionFromStartPoint:startMarker throughtWaypoints:waypointMarkers toDestinationPoint:endMarker];
+//    [self drawDirectionFromStartPoint:startMarker throughtWaypoints:waypointMarkers toDestinationPoint:endMarker];
 }
 
 - (IBAction)onBtnClearClick:(id)sender {
