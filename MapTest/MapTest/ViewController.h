@@ -31,6 +31,7 @@
 - (IBAction)onTextFieldEndClick:(id)sender;
 
 - (void) animateCameraToBound:(CLLocationCoordinate2D)startLocation endLocation:(CLLocationCoordinate2D)endLocation;
+- (void) highlightStep:(DirectionStep*)step;
 
 @end
 

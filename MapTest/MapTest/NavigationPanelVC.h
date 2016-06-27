@@ -10,8 +10,6 @@
 #import <ARSPContainerController.h>
 #import "DirectionRoute.h"
 
-@class ViewController;
-
 #define NAVIGATION_CELL_ID @"NavigationItemCell"
 
 @interface NavigationPanelVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
@@ -21,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tblNavigation;
 @property (weak, nonatomic) IBOutlet UIImageView *ivHandle;
 @property (nonatomic) DirectionRoute *route;
+- (IBAction)onPanelHandleTouched:(id)sender;
 
 - (void) updateNavigationDetailWithRoute:(DirectionRoute*)route;
 @end
